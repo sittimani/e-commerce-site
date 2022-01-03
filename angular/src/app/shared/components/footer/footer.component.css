@@ -1,0 +1,8 @@
+.footer {
+    align-content: center;
+    justify-content: center;
+}
+
+mat-toolbar {
+    height: 32px;
+}

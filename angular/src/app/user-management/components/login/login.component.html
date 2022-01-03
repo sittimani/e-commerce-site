@@ -1,0 +1,29 @@
+<div fxLayoutAlign="center center" class="main-div page-container">
+
+    <mat-card>
+        <mat-card-content>
+            <mat-toolbar>{{title}}</mat-toolbar>
+            <form fxLayout="column" class="login-form" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && logIn()">
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                    <mat-error>Invalid email</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="isHide ? 'password' : 'text'" formControlName="password">
+                    <button mat-icon-button matSuffix (click)="isHide = !isHide">
+                        <mat-icon>{{isHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error>Password must contain 8 characters</mat-error>
+                </mat-form-field>
+
+                <button mat-raised-button type="submit" color="accent">Login</button>
+                <br>
+                <button mat-raised-button type="button" color="accent">Forgotten Password?</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { color } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +9,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class LoginComponent {
 
+  public color = color
   public isHide = true
   public loginForm: FormGroup
   public title = "Login Form"
@@ -19,7 +21,7 @@ export class LoginComponent {
     })
   }
 
-  logIn() { 
+  logIn() {
     console.log(this.loginForm.value)
   }
 

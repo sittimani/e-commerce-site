@@ -4,6 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MaterialsModule } from '../materials/materials.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { InternalServerErrorComponent } from './components/internal-server-error/internal-server-error.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -15,6 +16,7 @@ import { InternalServerErrorComponent } from './components/internal-server-error
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MaterialsModule
   ],
   exports: [

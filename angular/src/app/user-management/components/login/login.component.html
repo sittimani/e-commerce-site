@@ -1,8 +1,7 @@
 <div fxLayoutAlign="center center" class="main-div page-container">
-
     <mat-card>
         <mat-card-content>
-            <mat-toolbar>{{title}}</mat-toolbar>
+            <mat-toolbar [color]="color">{{title}}</mat-toolbar>
             <form fxLayout="column" class="login-form" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && logIn()">
 
                 <mat-form-field appearance="fill">
@@ -20,9 +19,9 @@
                     <mat-error>Password must contain 8 characters</mat-error>
                 </mat-form-field>
 
-                <button mat-raised-button type="submit" color="accent">Login</button>
+                <button mat-raised-button type="submit" [color]="color">Login</button>
                 <br>
-                <button mat-raised-button type="button" color="accent">Forgotten Password?</button>
+                <button mat-raised-button type="button" [color]="color">Forgotten Password?</button>
             </form>
         </mat-card-content>
     </mat-card>

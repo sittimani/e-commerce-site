@@ -1,0 +1,8 @@
+post http://localhost:3000/register
+
+{
+    "name": "manikandan",
+    "email": "manikandansitti@gmail.com",
+    "phone": "1234533333",
+    "password": "Mani@4515"
+}

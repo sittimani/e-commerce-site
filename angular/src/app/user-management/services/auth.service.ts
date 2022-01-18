@@ -12,4 +12,8 @@ export class AuthService {
   register(user:any) {
     return this.http.post<string>(`${serverAddress}register`, user)
   }
+
+  login(creditionals: any) {
+    return this.http.post(`${serverAddress}login`, creditionals)
+  }
 }

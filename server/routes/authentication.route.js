@@ -1,5 +1,5 @@
 const controller = require('../controllers/authentication.controller')
-const userValidator = require('../validators/user.validator')
+const { userValidator, loginValidator } = require('../validators/user.validator')
 
 const routes = [{
     path: '/register',
@@ -8,6 +8,15 @@ const routes = [{
     options: {
         validate: {
             payload: userValidator
+        }
+    }
+}, {
+    path: '/login',
+    method: 'post',
+    handler: controller.login,
+    options: {
+        validate: {
+            payload: loginValidator
         }
     }
 }]

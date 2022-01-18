@@ -10,6 +10,21 @@ async function registerUser(body) {
     return JSON.stringify("User Created Successfully")
 }
 
+async function loginUser(body) {
+    console.log(body)
+    const user = await model.findOne({ email: body.email })
+    if (!user)
+        return boom.badRequest("User not found !!!")
+    return checkPassword(body, user)
+}
+
+function checkPassword(body, user) {
+    if (body.password === user.password)
+        return JSON.stringify("login Successfully!!!")
+    return boom.badRequest("Invalid Password !!!")
+}
+
 module.exports = {
-    registerUser
+    registerUser,
+    loginUser
 }

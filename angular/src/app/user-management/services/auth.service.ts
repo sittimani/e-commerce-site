@@ -16,4 +16,8 @@ export class AuthService {
   login(creditionals: any) {
     return this.http.post(`${serverAddress}login`, creditionals)
   }
+
+  setToken(authResponse: any) {
+    localStorage.setItem("token", authResponse.token)
+  }
 }

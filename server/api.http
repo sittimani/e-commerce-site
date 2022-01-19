@@ -6,3 +6,13 @@ post http://localhost:3000/register
     "phone": "1234533333",
     "password": "Mani@4515"
 }
+
+
+###
+
+post http://localhost:3000/login
+
+{
+    "email": "manikandan@gmail.com",
+    "password": "Mani@4515"
+}

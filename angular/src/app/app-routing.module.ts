@@ -20,8 +20,8 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: "home",
-    component: HomeComponent
+    path: "products",
+    loadChildren: () => import('./product-management/product-management.module').then(m => m.ProductManagementModule)
   },
   {
     path: "**",

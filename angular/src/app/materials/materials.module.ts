@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { TextFieldModule} from '@angular/cdk/text-field';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatCarouselModule } from '@ngbmodule/material-carousel';
 
 const MaterialModules = [
   MatButtonModule,
@@ -17,7 +18,8 @@ const MaterialModules = [
   MatInputModule,
   TextFieldModule,
   MatCardModule,
-  FlexLayoutModule
+  FlexLayoutModule,
+  MatCarouselModule.forRoot()
 ]
 
 @NgModule({

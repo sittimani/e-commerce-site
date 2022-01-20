@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { MaterialsModule } from './materials/materials.module';
 import { UserManagementModule } from './user-management/user-management.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCarouselModule } from '@ngbmodule/material-carousel';
 
 @NgModule({
   declarations: [

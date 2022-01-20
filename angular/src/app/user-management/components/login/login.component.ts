@@ -28,7 +28,7 @@ export class LoginComponent {
     this.authService.login(value).subscribe(response => {
       this.authService.setToken(response)
       console.log(response)
-      this.router.navigate(['home'])
+      this.router.navigate(['products'])
     })
   }
 

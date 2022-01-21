@@ -7,8 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { MaterialsModule } from './materials/materials.module';
 import { UserManagementModule } from './user-management/user-management.module';
-import { HttpClientModule } from '@angular/common/http';
-import { MatCarouselModule } from '@ngbmodule/material-carousel';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './core/interceptor/auth.interceptor';
+import { ErrorHandlerInterceptor } from './core/interceptor/error-handler.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,10 @@ import { MatCarouselModule } from '@ngbmodule/material-carousel';
     SharedModule,
     MaterialsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, multi: true, useClass: AuthInterceptor },
+    { provide: HTTP_INTERCEPTORS, multi: true, useClass: ErrorHandlerInterceptor }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

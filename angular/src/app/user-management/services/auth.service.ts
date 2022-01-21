@@ -9,7 +9,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  register(user:any) {
+  register(user: any) {
     return this.http.post<string>(`${serverAddress}register`, user)
   }
 
@@ -19,5 +19,16 @@ export class AuthService {
 
   setToken(authResponse: any) {
     localStorage.setItem("token", authResponse.token)
+  }
+
+  getToken() {
+    const token = localStorage.getItem("token")
+    if (token)
+      return token
+    return ""
+  }
+
+  logout() {
+    localStorage.removeItem("token")
   }
 }

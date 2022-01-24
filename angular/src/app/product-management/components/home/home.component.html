@@ -1,8 +1,8 @@
 <div class="container page-container">
     <div fxLayout="row" class="intro">
         <div fxFlex="100%">
-            <mat-carousel timings="250ms ease-in" [autoplay]="true" [interval]="interval" color="accent" maxWidth="auto" [loop]="true" [hideArrows]="false" [hideIndicators]="false" [useKeyboard]="true" [useMouseWheel]="false" orientation="ltr">
-                <mat-carousel-slide *ngFor="let slide of slides; let i = index" [image]="slide.image" [hideOverlay]="false"></mat-carousel-slide>
+            <mat-carousel timings="250ms ease-in" [autoplay]="true" [interval]="interval" color="accent" maxWidth="auto" [loop]="true" [hideArrows]="true" [hideIndicators]="false" [useKeyboard]="true" [useMouseWheel]="false">
+                <mat-carousel-slide *ngFor="let slide of slides; let i = index" [image]="slide"></mat-carousel-slide>
             </mat-carousel>
             <hr>
         </div>
@@ -22,7 +22,7 @@
                 <img mat-card-image class="card-image" mat-card-image [src]="catagory.url">
                 <hr>
                 <mat-card-actions>
-                    <button mat-button (click)="exploreCatagories(catagory.name)">Explore</button>
+                    <button mat-button (click)="exploreCatagories(catagory._id)">Explore</button>
                 </mat-card-actions>
             </mat-card>
         </div>

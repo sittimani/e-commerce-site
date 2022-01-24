@@ -1,22 +1,30 @@
-const hapi = require('@hapi/hapi')
-const connection = require('./services/connection')
+const Hapi = require('@hapi/hapi')
+const Path = require('path')
 const Jwt = require('jsonwebtoken')
-const authenticationRoute = require('./routes/authentication.route')
 require('dotenv').config()
 
-const server = hapi.server({
+const connection = require('./services/connection')
+const authenticationRoutes = require('./routes/authentication.route')
+const fileRoutes = require('./routes/files.route')
+const categoryRoutes = require('./routes/category.route')
+
+
+const server = Hapi.server({
     port: 3000,
-    host: "localhost"
+    host: 'localhost',
+    routes: {
+        files: {
+            relativeTo: Path.join(__dirname, 'public')
+        }
+    }
 })
 
 const init = async() => {
 
-    server.route(authenticationRoute)
-
     await server.register(require('hapi-cors'))
 
     server.events.on('start', () => {
-        console.log("server started!!!")
+        console.log('server started!!!')
     })
 
     const validate = async(decoded, request, h) => {
@@ -33,11 +41,17 @@ const init = async() => {
         }
     }
 
-    await server.register(require("hapi-auth-jwt2"))
-    await server.auth.strategy("jwt", "jwt", {
+    await server.register(require('hapi-auth-jwt2'))
+    await server.auth.strategy('jwt', 'jwt', {
         validate: validate,
         key: process.env.PRIVATE_KEY
     })
+
+    await server.register(require('@hapi/inert'))
+
+    server.route(authenticationRoutes)
+    server.route(fileRoutes)
+    server.route(categoryRoutes)
 
     await server.start()
 

@@ -16,3 +16,18 @@ post http://localhost:3000/login
     "email": "manikandan@gmail.com",
     "password": "Mani@4515"
 }
+
+###
+get http://localhost:3000/image/_DSC7274.JPG
+
+###
+get http://localhost:3000/baner/_DSC7274_copy.JPG
+
+###
+get http://localhost:3000/get-categories
+
+###
+get http://localhost:3000/categories/laptop.jpg
+
+###
+get http://localhost:3000/get-baners

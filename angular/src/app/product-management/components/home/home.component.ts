@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from '../../shared/interface/product.interface';
+import { ProductService } from '../../shared/services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -7,41 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent {
 
+  catagories: Category[] = []
+
   isNoCatagory = false
   interval = 6000
+  slides: String[] = []
 
-  slides = [{'image': "https://images-eu.ssl-images-amazon.com/images/G/31/x-locale/checkout/confirm-banner._CB485949149_.gif"}, {'image': "https://images.freekaamaal.com/post_images/1608704571.png"}]
+  constructor(private productService: ProductService) {
+    this.productService.getCategories().subscribe(categories => {
+      this.catagories = categories
+    })
+    
+    this.productService.getBaners().subscribe(baners => {
+      this.slides = baners
+    })
+  }
 
-  catagories = [
-    {
-    name: "somename",
-    url: "https://images.freekaamaal.com/post_images/1608704571.png"
-  },{
-    name: "somename",
-    url: "https://images.freekaamaal.com/post_images/1608704571.png"
-  },{
-    name: "somename",
-    url: "https://images.freekaamaal.com/post_images/1608704571.png"
-  },{
-    name: "somename",
-    url: "https://images.freekaamaal.com/post_images/1608704571.png"
-  },{
-    name: "somename",
-    url: "https://images.freekaamaal.com/post_images/1608704571.png"
-  },{
-    name: "somename",
-    url: "https://images.freekaamaal.com/post_images/1608704571.png"
-  },{
-    name: "somename",
-    url: "https://images.freekaamaal.com/post_images/1608704571.png"
-  },{
-    name: "somename",
-    url: "https://images.freekaamaal.com/post_images/1608704571.png"
-  },
-]
-
-  constructor() { }
-
-  exploreCatagories(name:string) {}
+  exploreCatagories(name: string) { }
 
 }

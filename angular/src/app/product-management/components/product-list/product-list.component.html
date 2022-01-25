@@ -1,0 +1,31 @@
+<div class=" page-container">
+
+    <div>
+        <h3>{{category}}</h3>
+        <hr>
+    </div>
+    <div class="container" fxLayout="row wrap" fxLayoutGap="16px grid">
+
+        <div fxFlex="20%" fxFlex.xs="50%" fxFlex.sm="33%" *ngFor="let product of products">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        {{ product.name }}
+                        <hr>
+                    </mat-card-title>
+                    <!-- <button mat-button (click)="addWishList(product._id)"><mat-icon>favorite</mat-icon></button> -->
+                </mat-card-header>
+                <img mat-card-image class="card-image" mat-card-image [src]="product.url">
+
+                <mat-card-content>
+                    PRICE: <strong>Rs. {{product.price}}</strong>
+                </mat-card-content>
+                <hr>
+                <mat-card-actions>
+                    <button mat-button (click)="addToCart(product._id)">Add to Cart</button>
+                    <button mat-button (click)="exploreproduct(product._id)">More Details</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

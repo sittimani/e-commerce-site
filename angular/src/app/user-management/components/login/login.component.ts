@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { color } from 'src/environments/environment.prod';
@@ -17,6 +17,7 @@ export class LoginComponent {
   public title = "Login Form"
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+    this.isUserLoggedIn()
     this.loginForm = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required, Validators.minLength(8)]]
@@ -27,12 +28,17 @@ export class LoginComponent {
     const value = this.loginForm.value
     this.authService.login(value).subscribe(response => {
       this.authService.setToken(response)
-      console.log(response)
-      this.router.navigate(['products'])
+      this.router.navigate(['/products'])
     })
   }
 
   getField(field: string) {
     return this.loginForm.get(field) as FormControl
+  }
+
+  isUserLoggedIn() {
+    if (this.authService.getToken())
+      this.router.navigate(['/products'])
+    this.authService.isUserLoggedin(false)
   }
 }

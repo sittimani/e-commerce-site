@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { serverAddress } from 'src/environments/environment.prod';
 
 @Injectable({
@@ -7,7 +8,13 @@ import { serverAddress } from 'src/environments/environment.prod';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  private isLoggedin: BehaviorSubject<boolean>
+  isLoggedin$: Observable<boolean>
+
+  constructor(private http: HttpClient) {
+    this.isLoggedin = new BehaviorSubject<boolean>(false)
+    this.isLoggedin$ = this.isLoggedin.asObservable()
+  }
 
   register(user: any) {
     return this.http.post<string>(`${serverAddress}register`, user)
@@ -30,5 +37,9 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem("token")
+  }
+
+  isUserLoggedin(value:boolean) {
+    this.isLoggedin.next(value)
   }
 }

@@ -1,0 +1,21 @@
+.container {
+    padding: 16px;
+}
+
+.card-image {
+    margin-left: 10px;
+    width: 200px;
+    height: 200px;
+}
+
+mat-card {
+    height: 350px;
+}
+
+mat-card-title {
+    margin-left: 50px;
+}
+
+mat-card-content {
+    margin-left: 25%;
+}

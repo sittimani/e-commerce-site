@@ -2,7 +2,12 @@
 
     <a>Let's Purchase</a>
     <span class="example-spacer"></span>
-    <a routerLink="/login">Login</a>
-    <a routerLink="/register">Register</a>
 
+    <ng-container *ngIf="!isUserLoggedIn">
+        <a routerLink="/login">Login</a>
+        <a routerLink="/register">Register</a>
+    </ng-container>
+    <ng-container *ngIf="isUserLoggedIn">
+        <a (click)="logout()">Logout</a>
+    </ng-container>
 </mat-toolbar>

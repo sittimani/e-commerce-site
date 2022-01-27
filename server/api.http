@@ -31,3 +31,19 @@ get http://localhost:3000/categories/laptop.jpg
 
 ###
 get http://localhost:3000/get-baners
+
+###
+GET  http://localhost:3000/get-products/phone HTTP/1.1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDMyNzAxMTV9.QN0sUW506hv80UUGU7FZkjDJu7LXtKPEG_uf_8ZkTsA
+
+
+###
+post http://localhost:3000/add-product
+
+{
+    "name": "realme 5 pro",
+    "url": "mobile.jpg",
+    "category": "mobile",
+    "price": 15000,
+    "available_stocks": 1000
+}

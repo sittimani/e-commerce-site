@@ -1,19 +1,18 @@
 <div class=" page-container">
 
-    <div>
-        <h3>{{category}}</h3>
+    <div style="text-align: center;">
+        <span class="title">{{category}}</span>
         <hr>
     </div>
     <div class="container" fxLayout="row wrap" fxLayoutGap="16px grid">
 
-        <div fxFlex="20%" fxFlex.xs="50%" fxFlex.sm="33%" *ngFor="let product of products">
+        <div fxFlex="20%" fxFlex.lg="20%" fxFlex.md="25%" fxFlex.sm="50%" *ngFor="let product of products">
             <mat-card>
                 <mat-card-header>
                     <mat-card-title>
                         {{ product.name }}
                         <hr>
                     </mat-card-title>
-                    <!-- <button mat-button (click)="addWishList(product._id)"><mat-icon>favorite</mat-icon></button> -->
                 </mat-card-header>
                 <img mat-card-image class="card-image" mat-card-image [src]="product.url">
 

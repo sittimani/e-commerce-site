@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { serverAddress } from 'src/environments/environment.prod';
-import { Category } from '../interface/product.interface';
+import { Category, Product } from '../interface/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +16,9 @@ export class ProductService {
 
   getBaners() {
     return this.http.get<String[]>(`${serverAddress}get-baners`)
+  }
+
+  getProducts(category:string) {
+    return this.http.get<Product[]>(`${serverAddress}get-products/${category}`)
   }
 }

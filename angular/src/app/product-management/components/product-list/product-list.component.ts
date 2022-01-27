@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { Product } from '../../shared/interface/product.interface';
 
 @Component({
   selector: 'app-product-list',
@@ -9,50 +10,14 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductListComponent implements OnInit {
 
   category: string = ""
-  products = [{
-    _id: "123",
-    name: "realme 5 pro",
-    url: "https://m.media-amazon.com/images/I/51z4GjHGZjL._SX679_.jpg",
-    price: 15000
-  }, {
-    _id: "123",
-    name: "realme 5 pro",
-    url: "https://m.media-amazon.com/images/I/51z4GjHGZjL._SX679_.jpg",
-    price: 15000
-  }, {
-    _id: "123",
-    name: "realme 5 pro",
-    url: "https://m.media-amazon.com/images/I/51z4GjHGZjL._SX679_.jpg",
-    price: 15000
-  }, {
-    _id: "123",
-    name: "realme 5 pro",
-    url: "https://m.media-amazon.com/images/I/51z4GjHGZjL._SX679_.jpg",
-    price: 15000
-  }, {
-    _id: "123",
-    name: "realme 5 pro",
-    url: "https://m.media-amazon.com/images/I/51z4GjHGZjL._SX679_.jpg",
-    price: 15000
-  }, {
-    _id: "123",
-    name: "realme 5 pro",
-    url: "https://m.media-amazon.com/images/I/51z4GjHGZjL._SX679_.jpg",
-    price: 15000
-  }, {
-    _id: "123",
-    name: "realme 5 pro",
-    url: "https://m.media-amazon.com/images/I/51z4GjHGZjL._SX679_.jpg",
-    price: 15000
-  }]
+  products!: Product[]
 
-  constructor(private route: ActivatedRoute) {
-    this.route.params.subscribe(object => {
-      this.category = object.name
-    })
+  constructor(private route: ActivatedRouteSnapshot) {
+    this.category = this.route.paramMap.get('name') || ""
   }
 
   ngOnInit(): void {
+    this.products = this.route.data.products
   }
 
   exploreproduct(id: string) { }

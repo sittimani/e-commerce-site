@@ -19,3 +19,10 @@ mat-card-title {
 mat-card-content {
     margin-left: 25%;
 }
+
+.title {
+    font-weight: bolder;
+    font-size: x-large;
+    display: block;
+    margin: 15px;
+}

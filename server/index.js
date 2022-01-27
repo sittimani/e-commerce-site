@@ -7,6 +7,7 @@ const connection = require('./services/connection')
 const authenticationRoutes = require('./routes/authentication.route')
 const fileRoutes = require('./routes/files.route')
 const categoryRoutes = require('./routes/category.route')
+const productsRoutes = require('./routes/products.route')
 
 
 const server = Hapi.server({
@@ -52,6 +53,7 @@ const init = async() => {
     server.route(authenticationRoutes)
     server.route(fileRoutes)
     server.route(categoryRoutes)
+    server.route(productsRoutes)
 
     await server.start()
 

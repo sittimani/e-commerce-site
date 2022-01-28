@@ -5,13 +5,15 @@ import { MaterialsModule } from '../materials/materials.module';
 import { MatCardModule } from '@angular/material/card';
 import { ProductManagementRoutingModule } from './product-management-routing.module';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductDetailComponent
   ],
   imports: [
     CommonModule,

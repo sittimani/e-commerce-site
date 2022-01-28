@@ -30,7 +30,6 @@ const init = async() => {
 
     const validate = async(decoded, request, h) => {
         const token = request.headers.authorization
-        console.log(token)
         if (!token)
             return { isValid: false, credentials: null }
         try {

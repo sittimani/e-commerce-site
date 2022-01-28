@@ -21,4 +21,8 @@ export class ProductService {
   getProducts(category:string) {
     return this.http.get<Product[]>(`${serverAddress}get-products/${category}`)
   }
+
+  getProductDetails(id:string) {
+    return this.http.get<Product>(`${serverAddress}get-product/${id}`)
+  }
 }

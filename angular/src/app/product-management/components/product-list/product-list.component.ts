@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Product } from '../../shared/interface/product.interface';
 
 @Component({
@@ -12,15 +12,17 @@ export class ProductListComponent implements OnInit {
   category: string = ""
   products!: Product[]
 
-  constructor(private route: ActivatedRouteSnapshot) {
-    this.category = this.route.paramMap.get('name') || ""
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.category = this.route.snapshot.paramMap.get('name') || ""
   }
 
   ngOnInit(): void {
-    this.products = this.route.data.products
+    this.products = this.route.snapshot.data.products
   }
 
-  exploreproduct(id: string) { }
+  exploreproduct(id: string) { 
+    this.router.navigate([`./${id}`], {relativeTo: this.route})
+  }
 
   addToCart(id: string) { }
 

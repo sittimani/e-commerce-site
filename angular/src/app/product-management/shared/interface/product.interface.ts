@@ -10,5 +10,6 @@ export interface Product {
     url: string,
     price: number,
     available_stocks: number,
-    category: string
+    category: string,
+    description: string
 }

@@ -10,7 +10,12 @@ async function setProducts(request, h) {
     return await service.addProduct(product)
 }
 
+async function getSpecificProduct(request, h) {
+    const id = request.params.id
+    return await service.getSpecificProduct(id)
+}
 module.exports = {
     getProducts,
-    setProducts
+    setProducts,
+    getSpecificProduct
 }

@@ -7,7 +7,6 @@ post http://localhost:3000/register
     "password": "Mani@4515"
 }
 
-
 ###
 
 post http://localhost:3000/login
@@ -33,7 +32,7 @@ get http://localhost:3000/categories/laptop.jpg
 get http://localhost:3000/get-baners
 
 ###
-GET  http://localhost:3000/get-products/phone HTTP/1.1
+GET  http://localhost:3000/get-products/mobile HTTP/1.1
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDMyNzAxMTV9.QN0sUW506hv80UUGU7FZkjDJu7LXtKPEG_uf_8ZkTsA
 
 
@@ -47,3 +46,7 @@ post http://localhost:3000/add-product
     "price": 15000,
     "available_stocks": 1000
 }
+
+### 
+get http://localhost:3000/get-product/61f25430de96191e502c0a20
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NDMyNzAxMTV9.QN0sUW506hv80UUGU7FZkjDJu7LXtKPEG_uf_8ZkTsA

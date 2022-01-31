@@ -4,7 +4,10 @@
         <span class="title">{{category}}</span>
         <hr>
     </div>
-    <div class="container" fxLayout="row wrap" fxLayoutGap="16px grid">
+    <span *ngIf="hasProducts" class="no-item">
+        No Products Found !!!
+    </span>
+    <div class="container" fxLayout="row wrap" fxLayoutGap="16px grid" *ngIf="!hasProducts">
 
         <div fxFlex="20%" fxFlex.lg="20%" fxFlex.md="25%" fxFlex.sm="50%" *ngFor="let product of products">
             <mat-card>

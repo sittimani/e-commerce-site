@@ -33,7 +33,7 @@ const init = async() => {
         if (!token)
             return { isValid: false, credentials: null }
         try {
-            await Jwt.verify(token, process.env.PRIVATE_KEY)
+            Jwt.verify(token, process.env.PRIVATE_KEY)
             return { isValid: true }
         } catch (error) {
             console.log(error)
@@ -42,7 +42,7 @@ const init = async() => {
     }
 
     await server.register(require('hapi-auth-jwt2'))
-    await server.auth.strategy('jwt', 'jwt', {
+    server.auth.strategy('jwt', 'jwt', {
         validate: validate,
         key: process.env.PRIVATE_KEY
     })
@@ -54,7 +54,16 @@ const init = async() => {
     server.route(categoryRoutes)
     server.route(productsRoutes)
 
+    server.ext('onPreResponse', (request, h, err) => {
+        console.log(h.request.response)
+        if (err) {
+            console.log(err)
+            return err
+        }
+        return h.continue
+    })
     await server.start()
+
 
     connection().then(resolve => {
         console.log('connected to mongoDB')

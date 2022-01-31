@@ -10,6 +10,7 @@ import { Product } from '../../shared/interface/product.interface';
 export class ProductListComponent implements OnInit {
 
   category: string = ""
+  hasProducts = true
   products!: Product[]
 
   constructor(private route: ActivatedRoute, private router: Router) {
@@ -18,10 +19,13 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.products = this.route.snapshot.data.products
+    if (this.products.length !== 0)
+      this.hasProducts = false
+    console.log(this.products.length, this.products)
   }
 
-  exploreproduct(id: string) { 
-    this.router.navigate([`./${id}`], {relativeTo: this.route})
+  exploreproduct(id: string) {
+    this.router.navigate([`./${id}`], { relativeTo: this.route })
   }
 
   addToCart(id: string) { }

@@ -8,29 +8,13 @@ import { ProductService } from '../../shared/services/product.service';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent {
 
-  product: Product ={
-    _id: '',
-    name: '',
-    url: '',
-    price: 0,
-    available_stocks: 0,
-    category: '',
-    description: ''
-  }
+  product!: Product
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
-    const id = this.route.snapshot.paramMap.get("id") || ""
-    this.productService.getProductDetails(id).subscribe(product => {
-      this.product = product
-    })
-  }
-
-  ngOnInit(): void {
-
+  constructor(private route: ActivatedRoute) {
+    this.product = this.route.snapshot.data.product
   }
 
   buyNow() { }
-
 }

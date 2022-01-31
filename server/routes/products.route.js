@@ -1,4 +1,7 @@
 const controller = require('../controllers/products.controller')
+const productValidator = require('../validators/product.validator')
+const joi = require('joi')
+const boom = require('boom')
 
 const routes = [{
     path: '/get-products/{category}',
@@ -16,7 +19,16 @@ const routes = [{
     method: 'get',
     config: {
         auth: 'jwt',
-        handler: controller.getSpecificProduct
+        handler: controller.getSpecificProduct,
+        response: {
+            schema: productValidator.productValidator,
+            failAction: (request, h, source, error) => {
+                if (error) {
+                    return boom.badData("Not Found")
+                }
+                return h.continue
+            }
+        }
     }
 }]
 

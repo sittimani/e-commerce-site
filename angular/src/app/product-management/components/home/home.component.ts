@@ -12,15 +12,16 @@ import { ProductService } from '../../shared/services/product.service';
 export class HomeComponent {
 
   categories: Category[] = []
-
-  isNocategory = false
   interval = 6000
+  hasCategories = false
   slides: String[] = []
 
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) {
 
     this.productService.getCategories().subscribe(categories => {
       this.categories = categories
+      if (this.categories.length !== 0)
+        this.hasCategories = true
     })
 
     this.productService.getBaners().subscribe(baners => {

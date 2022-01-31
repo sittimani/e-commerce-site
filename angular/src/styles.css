@@ -20,3 +20,7 @@ body {
     margin-bottom: 20px;
     width: 400px;
 }
+
+.no-item {
+    font-size: x-large;
+}

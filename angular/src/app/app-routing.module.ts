@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './product-management/components/home/home.component';
 import { InternalServerErrorComponent } from './shared/components/internal-server-error/internal-server-error.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { LoginComponent } from './user-management/components/login/login.component';
 import { RegisterComponent } from './user-management/components/register/register.component';
 
@@ -24,8 +24,12 @@ const routes: Routes = [
     loadChildren: () => import('./product-management/product-management.module').then(m => m.ProductManagementModule)
   },
   {
+    path: "not-found",
+    component: NotFoundComponent
+  },
+  {
     path: "**",
-    component: InternalServerErrorComponent
+    component: NotFoundComponent
   }
 ];
 

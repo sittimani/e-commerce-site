@@ -15,6 +15,9 @@ const productSchema = new schema({
     price: {
         type: Number
     },
+    description: {
+        type: String
+    },
     available_stocks: {
         type: Number
     }

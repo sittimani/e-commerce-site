@@ -5,6 +5,7 @@ import { MaterialsModule } from '../materials/materials.module';
 import { FooterComponent } from './components/footer/footer.component';
 import { InternalServerErrorComponent } from './components/internal-server-error/internal-server-error.component';
 import { RouterModule } from '@angular/router';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    InternalServerErrorComponent
+    InternalServerErrorComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,4 @@
+const Boom = require('boom')
 const model = require('../models/product.model')
 
 async function getProducts(category) {
@@ -15,9 +16,14 @@ async function addProduct(product) {
 }
 
 async function getSpecificProduct(id) {
-    const product = await model.findOne({ _id: id })
-    product.url = `http://localhost:3000/products/${product.url}`
-    return product
+    try {
+        const product = await model.findOne({ _id: id })
+        product.url = `http://localhost:3000/products/${product.url}`
+        return product.toObject()
+    } catch (error) {
+        return Boom.badRequest("Invalid Url")
+    }
+
 }
 
 module.exports = {

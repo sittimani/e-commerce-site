@@ -30,6 +30,9 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
       this.authService.logout()
       this.router.navigate(['/login'])
     }
+    if(error.status === 400) {
+      this.router.navigate(['/not-found'])
+    }
     alert(error.message)
   }
 }

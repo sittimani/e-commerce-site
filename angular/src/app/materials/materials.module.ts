@@ -9,6 +9,7 @@ import { TextFieldModule} from '@angular/cdk/text-field';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCarouselModule } from '@ngbmodule/material-carousel';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 const MaterialModules = [
   MatButtonModule,
@@ -19,6 +20,7 @@ const MaterialModules = [
   TextFieldModule,
   MatCardModule,
   FlexLayoutModule,
+  MatProgressBarModule,
   MatCarouselModule.forRoot()
 ]
 

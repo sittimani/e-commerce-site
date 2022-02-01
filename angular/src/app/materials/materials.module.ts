@@ -10,6 +10,10 @@ import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCarouselModule } from '@ngbmodule/material-carousel';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatMenuModule} from '@angular/material/menu'
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 const MaterialModules = [
   MatButtonModule,
@@ -21,6 +25,10 @@ const MaterialModules = [
   MatCardModule,
   FlexLayoutModule,
   MatProgressBarModule,
+  MatMenuModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
   MatCarouselModule.forRoot()
 ]
 

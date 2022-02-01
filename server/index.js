@@ -8,6 +8,7 @@ const authenticationRoutes = require('./routes/authentication.route')
 const fileRoutes = require('./routes/files.route')
 const categoryRoutes = require('./routes/category.route')
 const productsRoutes = require('./routes/products.route')
+const addressRoutes = require('./routes/address.route')
 
 
 const server = Hapi.server({
@@ -33,8 +34,9 @@ const init = async() => {
         if (!token)
             return { isValid: false, credentials: null }
         try {
-            Jwt.verify(token, process.env.PRIVATE_KEY)
-            return { isValid: true }
+            const decodedData = await Jwt.verify(token, process.env.PRIVATE_KEY)
+            console.log("decoded", JSON.stringify(decodedData))
+            return { isValid: true, credentials: decodedData }
         } catch (error) {
             console.log(error)
             return { isValid: false, credentials: null }
@@ -53,9 +55,9 @@ const init = async() => {
     server.route(fileRoutes)
     server.route(categoryRoutes)
     server.route(productsRoutes)
+    server.route(addressRoutes)
 
     server.ext('onPreResponse', (request, h, err) => {
-        console.log(h.request.response)
         if (err) {
             console.log(err)
             return err

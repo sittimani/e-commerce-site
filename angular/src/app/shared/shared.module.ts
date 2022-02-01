@@ -6,6 +6,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { InternalServerErrorComponent } from './components/internal-server-error/internal-server-error.component';
 import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { TableComponent } from './components/table/table.component';
 
 
 
@@ -14,7 +15,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     HeaderComponent,
     FooterComponent,
     InternalServerErrorComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    TableComponent,
+    NotFoundComponent
   ]
 })
 export class SharedModule { }

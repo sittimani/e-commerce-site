@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
 
   public color = color
   isUserLoggedIn = false
+  userName = "manikandan"
 
   constructor(private authService: AuthService, private router: Router) {
     this.authService.isLoggedin$.subscribe(isloggedIn => {
@@ -22,6 +23,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  updateProfile() {}
 
   logout() {
     this.authService.logout()

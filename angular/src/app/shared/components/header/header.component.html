@@ -8,6 +8,15 @@
         <a routerLink="/register">Register</a>
     </ng-container>
     <ng-container *ngIf="isUserLoggedIn">
-        <a (click)="logout()">Logout</a>
+        <a [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()">{{userName}}</a>
+
+        <mat-menu #menu="matMenu" [overlapTrigger]="false">
+            <nav class="nav-link" (mouseleave)="menuTrigger.closeMenu()">
+                <a (click)="updateProfile()">Update Profile</a>
+                <a routerLink="user/my-address">My Address</a>
+                <a routerLink="resetpassword">Change Password</a>
+                <a (click)="logout()">Logout</a>
+            </nav>
+        </mat-menu>
     </ng-container>
 </mat-toolbar>

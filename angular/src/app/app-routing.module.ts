@@ -21,7 +21,11 @@ const routes: Routes = [
   },
   {
     path: "products",
-    loadChildren: () => import('./product-management/product-management.module').then(m => m.ProductManagementModule)
+    loadChildren: () => import('./product-management/product-management.module').then(module => module.ProductManagementModule)
+  },
+  {
+    path: "user",
+    loadChildren: () => import('./user-actions/user-actions.module').then(module => module.UserActionsModule)
   },
   {
     path: "not-found",

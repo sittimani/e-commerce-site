@@ -20,7 +20,7 @@ async function loginUser(body) {
 
 async function checkPassword(body, user) {
     if (body.password === user.password)
-        return await createToken(body._id)
+        return await createToken(user._id)
     return boom.badRequest("Invalid Password !!!")
 }
 
@@ -29,7 +29,7 @@ async function createToken(id) {
         const token = await Jwt.sign({ id }, process.env.PRIVATE_KEY)
         return { token }
     } catch (error) {
-        console.log(error)
+        //console.log(error)
     }
 }
 

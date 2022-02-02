@@ -15,6 +15,7 @@ const server = Hapi.server({
     port: 3000,
     host: 'localhost',
     routes: {
+        cors: true,
         files: {
             relativeTo: Path.join(__dirname, 'public')
         }
@@ -23,7 +24,7 @@ const server = Hapi.server({
 
 const init = async() => {
 
-    await server.register(require('hapi-cors'))
+    // await server.register(require('hapi-cors'))
 
     server.events.on('start', () => {
         console.log('server started!!!')
@@ -35,7 +36,6 @@ const init = async() => {
             return { isValid: false, credentials: null }
         try {
             const decodedData = await Jwt.verify(token, process.env.PRIVATE_KEY)
-            console.log("decoded", JSON.stringify(decodedData))
             return { isValid: true, credentials: decodedData }
         } catch (error) {
             console.log(error)

@@ -1,0 +1,29 @@
+<div class="confirm-dialog-container">
+    <div class="content-container">
+        <mat-icon id="close-icon" (click)="closeDialog()">close</mat-icon>
+        <div>
+            <mat-card-content>
+                <mat-toolbar [color]="color">{{title}}</mat-toolbar>
+                <form fxLayout="column" class="address-form" [formGroup]="addressForm">
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Address</mat-label>
+                        <textarea matInput formControlName="address"></textarea>
+                        <mat-error>Invalid Address</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Phone</mat-label>
+                        <input matInput formControlName="phone">
+                        <mat-error>Invalid Phone Number</mat-error>
+                    </mat-form-field>
+
+                    <button *ngIf="!isEditAddress" mat-raised-button type="button" [color]="color" [mat-dialog-close]="addressForm.valid && addressForm.value">Submit Address</button>
+
+                    <button *ngIf="isEditAddress" mat-raised-button type="button" [color]="color" [mat-dialog-close]="addressForm.valid && addressForm.value">Update Address</button>
+                </form>
+                <br>
+            </mat-card-content>
+        </div>
+    </div>
+</div>

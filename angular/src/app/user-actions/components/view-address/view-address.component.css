@@ -1,3 +1,8 @@
 .container {
     padding: 16px
 }
+
+.open-button {
+    margin-top: 10px;
+    float: right;
+}

@@ -8,6 +8,9 @@ const addressSchema = new schema({
     },
     userId: {
         type: String
+    },
+    phone: {
+        type: String
     }
 }, { timestamps: true, versionKey: false })
 

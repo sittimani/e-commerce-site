@@ -1,0 +1,9 @@
+.confirm-dialog-container #close-icon {
+    float: right;
+    margin-bottom: 10px;
+    font-weight: bolder;
+}
+
+.confirm-dialog-container #close-icon:hover {
+    cursor: pointer;
+}

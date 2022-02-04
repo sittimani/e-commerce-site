@@ -28,7 +28,7 @@ export class AddressService {
   }
 
   getMyAddress() {
-    return this.http.get(`${serverAddress}getMyAddress`)
+    return this.http.get<Address[]>(`${serverAddress}getMyAddress`)
   }
 
   openDialog() {

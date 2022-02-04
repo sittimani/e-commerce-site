@@ -16,7 +16,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     resolve: {
       address: AddressResolver
-    }
+    },
+    runGuardsAndResolvers: 'always'
   }
 ];
 

@@ -10,6 +10,7 @@ import { UserManagementModule } from './user-management/user-management.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 import { ErrorHandlerInterceptor } from './core/interceptor/error-handler.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,14 @@ import { ErrorHandlerInterceptor } from './core/interceptor/error-handler.interc
     BrowserAnimationsModule,
     UserManagementModule,
     SharedModule,
-    MaterialsModule
+    MaterialsModule,
+    ToastrModule.forRoot({
+        timeOut: 3000,
+        progressBar: true,
+        progressAnimation: "increasing",
+        preventDuplicates: true,
+        closeButton: true
+      })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, multi: true, useClass: AuthInterceptor },

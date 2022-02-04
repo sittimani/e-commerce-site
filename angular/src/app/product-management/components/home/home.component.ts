@@ -30,7 +30,6 @@ export class HomeComponent {
   }
 
   explorecategories(name: string) {
-    console.log(this.route)
     this.router.navigate([`../list/${name}`], { relativeTo: this.route })
   }
 

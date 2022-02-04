@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/user-management/services/auth.service';
 import { color } from 'src/environments/environment.prod';
 
@@ -14,9 +15,8 @@ export class HeaderComponent implements OnInit {
   isUserLoggedIn = false
   userName = "manikandan"
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {
     this.authService.isLoggedin$.subscribe(isloggedIn => {
-      console.log(` is logged in: ${isloggedIn}`)
       this.isUserLoggedIn = isloggedIn
     })
    }
@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout()
+    this.toastr.success("Logout Successfully!!!")
     this.router.navigate(['/login'])
   }
 

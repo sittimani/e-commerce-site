@@ -16,7 +16,6 @@ export class AddressFormComponent {
   color = color
   title = "hello"
   isEditAddress = false
-
   address = {}
 
 

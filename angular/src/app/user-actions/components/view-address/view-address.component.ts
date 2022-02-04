@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Item } from 'src/app/shared/shared/interface/item.interface';
 import { Address } from '../../shared/interface/address.interface';
 import { AddressService } from '../../shared/services/address.service';
@@ -9,21 +10,21 @@ import { AddressService } from '../../shared/services/address.service';
   templateUrl: './view-address.component.html',
   styleUrls: ['./view-address.component.css']
 })
-export class ViewAddressComponent implements OnInit {
+export class ViewAddressComponent {
 
   public headers = ['address', 'phone']
   public items: Item[] = []
   isRemoveButton = true
 
-  constructor(private route: ActivatedRoute, private addressService: AddressService, private router: Router) {
+  constructor(private route: ActivatedRoute, private addressService: AddressService, private router: Router, private toastr: ToastrService) {
+    console.log("view address loaded")
     this.items = this.route.snapshot.data.address
   }
 
-  ngOnInit(): void { }
-
   removeAddress(id: string) {
     this.addressService.deleteUserAddress(id).subscribe(result => {
-      console.log(result)
+      this.toastr.success(result)
+      this.getUpdatedAddress()
     })
   }
 
@@ -36,7 +37,8 @@ export class ViewAddressComponent implements OnInit {
         result._id = id
         result.userId = address.userId
         this.addressService.updateUserAddress(result).subscribe(result => {
-          console.log(result)
+          this.toastr.success(result)
+          this.getUpdatedAddress()
         })
       }
     })
@@ -54,7 +56,8 @@ export class ViewAddressComponent implements OnInit {
     this.addressService.openDialog().afterClosed().subscribe((result: Address) => {
       if (this.isValidAddress(result)) {
         this.addressService.addUserAddress(result).subscribe(result => {
-         console.log(result)
+          this.toastr.success(result)
+          this.getUpdatedAddress()
         })
       }
     })
@@ -68,5 +71,11 @@ export class ViewAddressComponent implements OnInit {
       return false
     }
     return true
+  }
+
+  getUpdatedAddress() {
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.navigate([currentUrl]);
   }
 }

@@ -8,6 +8,7 @@
         <a routerLink="/register">Register</a>
     </ng-container>
     <ng-container *ngIf="isUserLoggedIn">
+        <a routerLink="/products">home</a>
         <a [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()">{{userName}}</a>
 
         <mat-menu #menu="matMenu" [overlapTrigger]="false">

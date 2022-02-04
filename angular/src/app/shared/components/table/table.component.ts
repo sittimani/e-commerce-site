@@ -14,12 +14,14 @@ export class TableComponent implements OnInit {
 
   @Input('headers') columns: string[] = [];
   @Input() items: Item[] = [];
-  @ViewChild(MatSort) sort!: MatSort;
   @Input() isRemoveButton = false;
-  @Output() RemoveAddress = new EventEmitter<string>();
 
+  @Output() RemoveAddress = new EventEmitter<string>();
   @Output() UpdateAddress = new EventEmitter<string>();
+
   dataSource!: MatTableDataSource<Item>;
+  @ViewChild(MatSort) sort!: MatSort;
+
   isNoItem = false;
   displayedColumns: string[] = ['remove', 'modification'];
 

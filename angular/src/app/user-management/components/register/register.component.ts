@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { misMatch } from 'src/app/core/validators/mis-match.validators';
 import { nameValidator } from 'src/app/core/validators/name.validators';
 import { invalidPassword } from 'src/app/core/validators/password.validators';
@@ -20,7 +21,7 @@ export class RegisterComponent {
   public registrationForm: FormGroup
   public title = "Registration Form"
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private toastr: ToastrService) {
     this.registrationForm = this.formBuilder.group({
       name: ["", [Validators.required, nameValidator]],
       phone: ["", [Validators.required, phoneValidator]],
@@ -33,7 +34,8 @@ export class RegisterComponent {
   register() {
     const data = this.registrationForm.value
     this.authService.register(data).subscribe(result => {
-      alert(result)
+      this.toastr.success(result)
+      this.router.navigate(['/login'])
     })
   }
 

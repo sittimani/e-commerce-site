@@ -21,7 +21,6 @@ export class ProductListComponent implements OnInit {
     this.products = this.route.snapshot.data.products
     if (this.products.length !== 0)
       this.hasProducts = false
-    console.log(this.products.length, this.products)
   }
 
   exploreproduct(id: string) {

@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { ProductManagementRoutingModule } from './product-management-routing.module';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,12 +15,15 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
   declarations: [
     HomeComponent,
     ProductListComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    OrderConfirmationComponent
   ],
   imports: [
     CommonModule,
     ProductManagementRoutingModule,
     MaterialsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatCardModule
   ]
 })

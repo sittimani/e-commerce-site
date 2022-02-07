@@ -4,6 +4,7 @@ import { AuthGuard } from '../core/guards/auth.guard';
 import { ProductDetailResolver } from '../core/resolvers/product-detail.resolver';
 import { ProductListResolver } from '../core/resolvers/product-list.resolver';
 import { HomeComponent } from './components/home/home.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 
@@ -29,6 +30,14 @@ const routes: Routes = [
   {
     path: "list/:name/:id",
     component: ProductDetailComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      product: ProductDetailResolver
+    }
+  },
+  {
+    path: "confirm/:id",
+    component: OrderConfirmationComponent,
     canActivate: [AuthGuard],
     resolve: {
       product: ProductDetailResolver

@@ -1,0 +1,28 @@
+<div fxLayoutAlign="center center" class="main-div page-container">
+    <mat-card>
+        <mat-card-content>
+            <mat-toolbar [color]="color">{{title}}</mat-toolbar>
+            <form fxLayout="column" class="order-form" [formGroup]="orderForm" (ngSubmit)="orderForm.valid && placeOrder()">
+
+                <div>
+                    <p><strong>Name: </strong> {{product.name}}</p>
+                    <p><strong>Price: </strong> Rs. {{product.price}}</p>
+                </div>
+
+
+                <label>Address: </label>
+                <mat-radio-group formControlName="address">
+                    <mat-radio-button *ngFor="let value of ['a','b','c']" [value]="value">{{value}}</mat-radio-button>
+                </mat-radio-group>
+
+                <label>Delivery Type: </label>
+                <mat-radio-group formControlName="deliveryType">
+                    <mat-radio-button value="standard">Expected delivery within week - Free Delivery</mat-radio-button>
+                    <mat-radio-button value="medium">Expected delivery within 4 days - Rs.100</mat-radio-button>
+                    <mat-radio-button value="express">Expected delivery within 2 days - Rs.200</mat-radio-button>
+                </mat-radio-group>
+                <button mat-raised-button type="submit" [color]="color">Place Order</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

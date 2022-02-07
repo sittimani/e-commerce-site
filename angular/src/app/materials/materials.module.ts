@@ -15,6 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
 
 const MaterialModules = [
   MatButtonModule,
@@ -31,7 +32,8 @@ const MaterialModules = [
   MatPaginatorModule,
   MatSortModule,
   MatCarouselModule.forRoot(),
-  MatDialogModule
+  MatDialogModule,
+  MatRadioModule
 ]
 
 @NgModule({

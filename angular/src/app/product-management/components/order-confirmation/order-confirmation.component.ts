@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { selectvalidator } from 'src/app/core/validators/select.validators';
+import { Address } from 'src/app/user-actions/shared/interface/address.interface';
 import { color } from 'src/environments/environment.prod';
 import { Product } from '../../shared/interface/product.interface';
 import { ProductService } from '../../shared/services/product.service';
@@ -17,6 +18,7 @@ export class OrderConfirmationComponent implements OnInit {
   orderForm!: FormGroup
   product!: Product
   title = "Confirm Order"
+  addresses!: Address[]
 
   constructor(private formBuilder: FormBuilder, private productService: ProductService, private route: ActivatedRoute) {
     this.orderForm = this.formBuilder.group({
@@ -27,9 +29,20 @@ export class OrderConfirmationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.productService.getAddress().subscribe(address => {
+      this.addresses = address
+    })
   }
 
   placeOrder() {
-    console.log(this.orderForm.value)
+    const data = this.orderForm.value
+    const values = {
+      productId: this.product._id,
+      deliveryType: data.deliveryType,
+      address: data.address
+    }
+    this.productService.placeOrder(values).subscribe(result => {
+      console.log(result)
+    })
   }
 }

@@ -7,7 +7,7 @@ import { AddressFormComponent } from '../../components/address-form/address-form
 import { Address } from '../interface/address.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'any'
 })
 export class AddressService {
 

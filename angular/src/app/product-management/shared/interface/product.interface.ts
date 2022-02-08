@@ -13,3 +13,9 @@ export interface Product {
     category: string,
     description: string
 }
+
+export interface Order {
+    address: string,
+    productId:string,
+    deliveryType: string
+}

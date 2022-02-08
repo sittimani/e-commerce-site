@@ -9,10 +9,9 @@
                     <p><strong>Price: </strong> Rs. {{product.price}}</p>
                 </div>
 
-
                 <label>Address: </label>
                 <mat-radio-group formControlName="address">
-                    <mat-radio-button *ngFor="let value of ['a','b','c']" [value]="value">{{value}}</mat-radio-button>
+                    <mat-radio-button *ngFor="let address of addresses" [value]="address.address">{{address.address}}</mat-radio-button>
                 </mat-radio-group>
 
                 <label>Delivery Type: </label>

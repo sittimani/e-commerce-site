@@ -9,7 +9,7 @@ const fileRoutes = require('./routes/files.route')
 const categoryRoutes = require('./routes/category.route')
 const productsRoutes = require('./routes/products.route')
 const addressRoutes = require('./routes/address.route')
-
+const orderRoutes = require('./routes/orders.route')
 
 const server = Hapi.server({
     port: 3000,
@@ -56,6 +56,7 @@ const init = async() => {
     server.route(categoryRoutes)
     server.route(productsRoutes)
     server.route(addressRoutes)
+    server.route(orderRoutes)
 
     server.ext('onPreResponse', (request, h, err) => {
         if (err) {
